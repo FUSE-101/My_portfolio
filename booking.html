@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Book Emmanuel Mantey — front-end development and security audit services with clear, fixed prices in USD."
+    />
+    <meta name="theme-color" content="#f4f6fb" />
+    <script>
+      // Apply the saved (or system-preferred) theme before first paint
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          var dark = stored
+            ? stored === "dark"
+            : window.matchMedia("(prefers-color-scheme: dark)").matches;
+          document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) meta.setAttribute("content", dark ? "#060a13" : "#f4f6fb");
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
+    <title>Book Me — Pricing &amp; Booking | Emmanuel Mantey</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- FontAwesome icons CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Scroll progress bar -->
+    <div id="scroll-progress" aria-hidden="true"></div>
+
+    <header id="header">
+      <a class="logo" href="index.html">&lt;APEX<span class="logo-caret">/&gt;</span></a>
+
+      <nav class="main-nav" aria-label="Primary navigation">
+        <ul class="main-nav-list">
+          <li>
+            <a class="main-nav-link" href="index.html#home"
+              ><i class="fa-solid fa-house"></i>Home</a
+            >
+          </li>
+          <li>
+            <a class="main-nav-link" href="index.html#about"
+              ><i class="fa-solid fa-user"></i>About</a
+            >
+          </li>
+          <li>
+            <a class="main-nav-link" href="index.html#skills"
+              ><i class="fa-solid fa-code"></i>Skills</a
+            >
+          </li>
+          <li>
+            <a class="main-nav-link" href="index.html#security"
+              ><i class="fa-solid fa-shield-halved"></i>Security</a
+            >
+          </li>
+          <li>
+            <a class="main-nav-link" href="index.html#projects"
+              ><i class="fa-solid fa-folder-open"></i>Projects</a
+            >
+          </li>
+          <li>
+            <a class="main-nav-link" href="index.html#contact"
+              ><i class="fa-solid fa-envelope"></i>Contact</a
+            >
+          </li>
+          <li>
+            <a class="main-nav-link active" href="booking.html#pricing"
+              ><i class="fa-solid fa-calendar-check"></i>Book Me</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button
+          class="theme-toggle"
+          id="theme-toggle"
+          type="button"
+          aria-label="Switch theme"
+          title="Switch between light and dark theme"
+        >
+          <i class="fa-solid fa-moon" aria-hidden="true"></i>
+          <i class="fa-solid fa-sun" aria-hidden="true"></i>
+        </button>
+        <button class="btn-mobile-nav" aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars icon-mobile-nav"></i>
+          <i class="fa-solid fa-xmark icon-mobile-nav"></i>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- ================= PAGE HERO ================= -->
+      <section class="page-hero">
+        <p class="hero-greeting"><span class="prompt">$</span> ./book --plan</p>
+        <h1>Let's build something <span class="gradient-text">great</span></h1>
+        <p class="hero-desc">
+          Clear, fixed prices in USD — no surprises. Pick a package below and
+          book me in about 2 minutes. Every project starts with a free
+          consultation.
+        </p>
+        <div class="hero-actions">
+          <a href="#booking-form" class="btn btn-primary"
+            ><i class="fa-solid fa-calendar-check"></i>Book a Project</a
+          >
+          <a href="index.html#projects" class="btn btn-ghost"
+            ><i class="fa-solid fa-folder-open"></i>See My Work First</a
+          >
+        </div>
+      </section>
+
+      <!-- ================= PRICING ================= -->
+      <section id="pricing" class="pricing fade-in">
+        <h2 class="section-title"><span class="title-index">$</span>Pricing</h2>
+
+        <div class="pricing-grid">
+          <article class="pricing-card" data-package="starter">
+            <div class="pricing-icon"><i class="fa-solid fa-rocket"></i></div>
+            <h3>Starter — Landing Page</h3>
+            <p class="price"><span class="price-currency">$</span>99<span class="price-period"> one-time</span></p>
+            <p class="pricing-desc">A single, high-converting page to launch your idea.</p>
+            <ul class="pricing-features">
+              <li><i class="fa-solid fa-check"></i>1-page responsive website</li>
+              <li><i class="fa-solid fa-check"></i>Mobile-first design</li>
+              <li><i class="fa-solid fa-check"></i>Contact form hookup</li>
+              <li><i class="fa-solid fa-check"></i>Basic SEO &amp; analytics</li>
+              <li><i class="fa-solid fa-check"></i>1 round of revisions</li>
+              <li><i class="fa-solid fa-check"></i>Delivery in ~1 week</li>
+            </ul>
+            <button type="button" class="btn btn-ghost btn-book" data-target="starter">
+              <i class="fa-solid fa-cart-plus"></i>Book — $99
+            </button>
+          </article>
+
+          <article class="pricing-card featured" data-package="business">
+            <span class="featured-tag"><i class="fa-solid fa-star"></i>Most Popular</span>
+            <div class="pricing-icon"><i class="fa-solid fa-briefcase"></i></div>
+            <h3>Business — Multi-Page Site</h3>
+            <p class="price"><span class="price-currency">$</span>249<span class="price-period"> one-time</span></p>
+            <p class="pricing-desc">Up to 5 pages for your brand or business.</p>
+            <ul class="pricing-features">
+              <li><i class="fa-solid fa-check"></i>Up to 5 custom pages</li>
+              <li><i class="fa-solid fa-check"></i>Sections &amp; animations</li>
+              <li><i class="fa-solid fa-check"></i>Blog- or news-ready layout</li>
+              <li><i class="fa-solid fa-check"></i>Contact form + map embed</li>
+              <li><i class="fa-solid fa-check"></i>2 rounds of revisions</li>
+              <li><i class="fa-solid fa-check"></i>Delivery in ~2 weeks</li>
+            </ul>
+            <button type="button" class="btn btn-primary btn-book" data-target="business">
+              <i class="fa-solid fa-cart-plus"></i>Book — $249
+            </button>
+          </article>
+
+          <article class="pricing-card" data-package="custom">
+            <div class="pricing-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <h3>Custom — Web App / React</h3>
+            <p class="price"><span class="price-currency">$</span>499<span class="price-period"> one-time</span></p>
+            <p class="pricing-desc">Interactive applications with modern tooling.</p>
+            <ul class="pricing-features">
+              <li><i class="fa-solid fa-check"></i>React-powered interface</li>
+              <li><i class="fa-solid fa-check"></i>API integration</li>
+              <li><i class="fa-solid fa-check"></i>Auth-ready setup</li>
+              <li><i class="fa-solid fa-check"></i>Performance optimization</li>
+              <li><i class="fa-solid fa-check"></i>3 rounds of revisions</li>
+              <li><i class="fa-solid fa-check"></i>Delivery in 3–4 weeks</li>
+            </ul>
+            <button type="button" class="btn btn-ghost btn-book" data-target="custom">
+              <i class="fa-solid fa-cart-plus"></i>Book — $499
+            </button>
+          </article>
+
+          <article class="pricing-card" data-package="audit">
+            <div class="pricing-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <h3>Security Audit</h3>
+            <p class="price"><span class="price-currency">$</span>149<span class="price-period"> one-time</span></p>
+            <p class="pricing-desc">A front-end security review of your existing site.</p>
+            <ul class="pricing-features">
+              <li><i class="fa-solid fa-check"></i>OWASP Top 10 check (XSS, SQLi, CSRF)</li>
+              <li><i class="fa-solid fa-check"></i>Secure headers &amp; CSP review</li>
+              <li><i class="fa-solid fa-check"></i>Actionable report with fixes</li>
+              <li><i class="fa-solid fa-check"></i>Prioritized findings</li>
+              <li><i class="fa-solid fa-check"></i>1 re-check round</li>
+              <li><i class="fa-solid fa-check"></i>Report in ~1 week</li>
+            </ul>
+            <button type="button" class="btn btn-ghost btn-book" data-target="audit">
+              <i class="fa-solid fa-cart-plus"></i>Book — $149
+            </button>
+          </article>
+        </div>
+
+        <div class="hourly-note">
+          <i class="fa-solid fa-clock"></i>
+          <p>Need something small — a fix, a tweak, ongoing help? <strong>$20/hour</strong>, billed in 30-minute blocks. Just pick “Custom / Other” in the form.</p>
+        </div>
+      </section>
+
+      <!-- ================= HOW IT WORKS ================= -->
+      <section class="process fade-in">
+        <h2 class="section-title"><span class="title-index">02.</span>How It Works</h2>
+        <div class="process-grid">
+          <div class="process-step">
+            <span class="process-num">01</span>
+            <i class="fa-solid fa-pen-to-square"></i>
+            <h3>Book &amp; describe</h3>
+            <p>Fill in the form below — package, budget, and a few lines about your project.</p>
+          </div>
+          <div class="process-step">
+            <span class="process-num">02</span>
+            <i class="fa-solid fa-comments"></i>
+            <h3>Free consultation</h3>
+            <p>I reply within 24 hours to nail down scope, timeline, and any questions.</p>
+          </div>
+          <div class="process-step">
+            <span class="process-num">03</span>
+            <i class="fa-solid fa-hand-holding-dollar"></i>
+            <h3>50% deposit</h3>
+            <p>Work starts once the deposit is received — the rest is due on completion.</p>
+          </div>
+          <div class="process-step">
+            <span class="process-num">04</span>
+            <i class="fa-solid fa-rocket"></i>
+            <h3>Launch</h3>
+            <p>We build, you review, and we ship. Revisions included in every package.</p>
+          </div>
+        </div>
+        <p class="payment-note">
+          <i class="fa-solid fa-credit-card"></i>
+          Payments via PayPal or bank transfer · 50% deposit · 50% on completion.
+        </p>
+      </section>
+
+      <!-- ================= FAQ ================= -->
+      <section class="faq fade-in">
+        <h2 class="section-title"><span class="title-index">03.</span>FAQ</h2>
+        <div class="faq-list">
+          <details>
+            <summary><i class="fa-solid fa-circle-question"></i>How fast will you reply?</summary>
+            <p>Within 24 hours — usually the same day. Check your spam folder if you don't see my reply.</p>
+          </details>
+          <details>
+            <summary><i class="fa-solid fa-circle-question"></i>What's included in the price?</summary>
+            <p>Custom design, responsive build, basic SEO, and the revision rounds listed on each package. Hosting and domain are billed separately only if you want me to set them up.</p>
+          </details>
+          <details>
+            <summary><i class="fa-solid fa-circle-question"></i>Do you require a deposit?</summary>
+            <p>Yes — 50% to start the project, and the remaining 50% when it's complete and you're happy.</p>
+          </details>
+          <details>
+            <summary><i class="fa-solid fa-circle-question"></i>Can you audit a site I already have?</summary>
+            <p>Absolutely — choose the Security Audit package and share the URL in the project details. You'll get a prioritized report with concrete fixes.</p>
+          </details>
+        </div>
+      </section>
+
+      <!-- ================= BOOKING FORM ================= -->
+      <section id="booking-form" class="booking fade-in">
+        <h2 class="section-title"><span class="title-index">04.</span>Book Me</h2>
+        <p class="booking-intro">
+          Tell me about your project — submitting opens a pre-filled email in
+          your mail app. Just hit send. (No account, no signup.)
+        </p>
+
+        <form id="booking-form-el" class="booking-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="b-name">Your name <span class="req">*</span></label>
+              <input type="text" id="b-name" name="name" placeholder="Jane Doe" required />
+            </div>
+            <div class="form-group">
+              <label for="b-email">Your email <span class="req">*</span></label>
+              <input type="email" id="b-email" name="email" placeholder="jane@example.com" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="b-package">Package</label>
+              <select id="b-package" name="package">
+                <option value="starter">Starter Landing Page — $99</option>
+                <option value="business">Business Multi-Page Site — $249</option>
+                <option value="custom">Custom Web App (React) — $499</option>
+                <option value="audit">Security Audit — $149</option>
+                <option value="other">Custom / Other — let's discuss</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="b-budget">Budget</label>
+              <select id="b-budget" name="budget">
+                <option value="Under $250">Under $250</option>
+                <option value="$250 – $500">$250 – $500</option>
+                <option value="$500+">$500+</option>
+                <option value="Not sure yet">Not sure yet</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="b-timeline">Timeline</label>
+              <select id="b-timeline" name="timeline">
+                <option value="ASAP">ASAP</option>
+                <option value="1 – 2 weeks">1 – 2 weeks</option>
+                <option value="3 – 4 weeks">3 – 4 weeks</option>
+                <option value="Flexible">Flexible</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="b-details">Project details <span class="req">*</span></label>
+            <textarea
+              id="b-details"
+              name="details"
+              rows="5"
+              placeholder="What are we building? Share your goal, any links or references, and what success looks like for you."
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-submit">
+            <i class="fa-solid fa-paper-plane"></i>Send Booking Request
+          </button>
+
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 Emmanuel Mantey. Built with <span class="foot-bolt">⚡</span> and a security mindset.</p>
+      <p class="foot-note">
+        <i class="fa-solid fa-terminal"></i> exit 0 — no vulnerabilities found
+      </p>
+    </footer>
+
+    <button id="back-to-top" aria-label="Back to top">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

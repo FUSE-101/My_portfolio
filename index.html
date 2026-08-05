@@ -3,41 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>APEX _ (Advanced Programming EXcellence)</title>
+    <meta
+      name="description"
+      content="Emmanuel Mantey — Front-End Developer & Cybersecurity enthusiast. Building fast, secure, and user-focused web experiences."
+    />
+    <meta name="theme-color" content="#f4f6fb" />
+    <script>
+      // Apply the saved (or system-preferred) theme before first paint
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          var dark = stored
+            ? stored === "dark"
+            : window.matchMedia("(prefers-color-scheme: dark)").matches;
+          document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) meta.setAttribute("content", dark ? "#060a13" : "#f4f6fb");
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
+    <title>Emmanuel Mantey — Front-End Developer & Cybersecurity Enthusiast</title>
 
-    <link rel="stylesheet" href="style.css" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- FontAwesome icons CDN -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      integrity="sha512-pIVo5BqSWm1KdjZqvSZNqZqbrUM/xqZp0I/ZzF1I3XK3NN/Rv7uLzX1GWUmfVxgq1fVYf7o46Kd5V7wTj6Uq2g=="
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <script
-      src="https://kit.fontawesome.com/a47207654a.js"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule=""
-      src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"
-    ></script>
+
+    <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
-    <header>
-      <h1 class="web_name">
-        <a href="./index.html"> < APEX <span>/> </span></a>
-      </h1>
-      <button class="btn-mobile-nav">
-        <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
-        <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
-      </button>
-      <nav class="main-nav">
+    <!-- Scroll progress bar -->
+    <div id="scroll-progress" aria-hidden="true"></div>
+
+    <header id="header">
+      <a class="logo" href="#home">&lt;APEX<span class="logo-caret">/&gt;</span></a>
+
+      <nav class="main-nav" aria-label="Primary navigation">
         <ul class="main-nav-list">
           <li>
             <a class="main-nav-link" href="#home"
@@ -46,310 +62,578 @@
           </li>
           <li>
             <a class="main-nav-link" href="#about"
-              ><i class="fa fa-user"></i>About</a
+              ><i class="fa-solid fa-user"></i>About</a
+            >
+          </li>
+          <li>
+            <a class="main-nav-link" href="#skills"
+              ><i class="fa-solid fa-code"></i>Skills</a
+            >
+          </li>
+          <li>
+            <a class="main-nav-link" href="#security"
+              ><i class="fa-solid fa-shield-halved"></i>Security</a
             >
           </li>
           <li>
             <a class="main-nav-link" href="#projects"
-              ><i class="fa fa-folder-open"></i>Projects</a
+              ><i class="fa-solid fa-folder-open"></i>Projects</a
             >
           </li>
-
-          <li>
-            <a class="main-nav-link" href="#skills"
-              ><i class="fa fa-code"></i>Skills</a
-            >
-          </li>
-
           <li>
             <a class="main-nav-link" href="#contact"
-              ><i class="fa fa-envelope"></i>Contact</a
+              ><i class="fa-solid fa-envelope"></i>Contact</a
+            >
+          </li>
+          <li>
+            <a class="main-nav-link" href="booking.html"
+              ><i class="fa-solid fa-calendar-check"></i>Book Me</a
             >
           </li>
         </ul>
       </nav>
+
+      <div class="header-actions">
+        <button
+          class="theme-toggle"
+          id="theme-toggle"
+          type="button"
+          aria-label="Switch theme"
+          title="Switch between light and dark theme"
+        >
+          <i class="fa-solid fa-moon" aria-hidden="true"></i>
+          <i class="fa-solid fa-sun" aria-hidden="true"></i>
+        </button>
+        <button class="btn-mobile-nav" aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars icon-mobile-nav"></i>
+          <i class="fa-solid fa-xmark icon-mobile-nav"></i>
+        </button>
+      </div>
     </header>
 
-    <section id="home" class="hero fade-in">
-      <h2>Hello, I'm <span>Emmanuel</span></h2>
-      <p>
-        Front-End Developer, building modern responsive and user-focused web
-        experiences.
-      </p>
-      <a href="#projects" class="btn"
-        ><i class="fa-solid fa-angles-down"></i>View My Work</a
-      >
-    </section>
-
-    <section id="about" class="fade-in about">
-      <h2 class="section-title">About Me</h2>
-      <!-- <section id="skills" class="fade-in"> -->
-      <!-- <h2 class="skills">Skills</h2> -->
-      <div class="skills-list fade-in" id="skills">
-        <!-- <div class="skill"><i class="fa-brands fa-html5"></i> HTML</div>
-        <div class="skill"><i class="fa-brands fa-css3-alt"></i> CSS</div> -->
-        <div class="skill"><i class="fa-brands fa-js"></i> JavaScript</div>
-        <div class="skill"><i class="fa-brands fa-react"></i> React</div>
-        <div class="skill">
-          <i class="fa fa-mobile-alt"></i> Responsive Design
-        </div>
-        <div class="skill"><i class="fa-brands fa-git-alt"></i> Git</div>
-        <div class="skill"><i class="fa fa-server"></i> Web Hosting</div>
-      </div>
-      <!-- </section> -->
-
-      <div class="carousel">
-        <img src="./img/me4545.jpg" alt="Shaykh" />
-        <blockquote class="testimonial">
-          <p class="testimonial-text">
-            I am a passionate Front-End Developer dedicated to building clean,
-            responsive, and high-performance websites. I specialize in
-            transforming ideas into engaging digital experiences through modern
-            web technologies and best design practices. My focus is on
-            delivering intuitive user interfaces, optimizing performance for
-            speed and scalability, and ensuring seamless functionality across
-            all devices and browsers. I am committed to writing maintainable,
-            efficient code and continuously improving my skills to stay aligned
-            with the latest industry standards and trends. My goal is to create
-            visually appealing, user-centered solutions that not only look great
-            but also provide meaningful and accessible experiences.
+    <main>
+      <!-- ================= HERO ================= -->
+      <section id="home" class="hero">
+        <div class="hero-content">
+          <p class="hero-greeting"><span class="prompt">$</span> whoami</p>
+          <h1>
+            Hi, I'm <span class="gradient-text">Emmanuel Mantey</span>
+          </h1>
+          <p class="hero-role">
+            <span class="prompt">&gt;</span>
+            <span id="typed" class="typed" aria-hidden="true"></span><!-- --><span class="cursor" aria-hidden="true">▊</span>
           </p>
-
-          <p class="testimonial-author rating">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
+          <p class="hero-desc">
+            Front-End Developer &amp; cybersecurity enthusiast. I craft fast,
+            accessible, and <em>security-minded</em> web experiences — and I
+            break them in labs to understand how to defend them.
           </p>
-          <p class="testimonial-job">Senior front End Developer</p>
-        </blockquote>
-      </div>
-    </section>
-
-    <section id="projects" class="fade-in">
-      <h2>Projects</h2>
-      <div class="projects-grid">
-        <div class="project-card">
-          <img src="./img/project_1.png" alt="Project One" />
-          <h3>Andriod Web Page</h3>
-          <p>Responsive android web page built with HTML, CSS.</p>
-          <p class="rating">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </p>
-        </div>
-
-        <div class="project-card">
-          <img
-            src="./img/Screenshot 2026-02-21 at 17-37-41 Android.png"
-            alt="Project One"
-          />
-          <h3>Andriod Web Page</h3>
-          <p>Responsive android web page built with HTML, CSS.</p>
-          <p class="rating">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </p>
-        </div>
-
-        <div class="project-card">
-          <img
-            src="./img/Screenshot 2026-02-21 at 17-38-31 Blog — Data Vault.png "
-            alt="Project One"
-          />
-          <h3>Contact Web Page</h3>
-          <p>
-            Responsive contact web page built with HTML, CSS, and JavaScript.
-          </p>
-          <p class="testimonial-author rating">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </p>
-        </div>
-        <div class="project-card">
-          <img src="./img/project_3.png" alt="Project Three" />
-          <h3>Contact Web Page</h3>
-          <p>
-            Full responsive contact web page built with HTML, CSS, and
-            JavaScript.
-          </p>
-          <p class="testimonial-author rating">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </p>
-        </div>
-
-        <div class="project-card">
-          <img src="./img/project_2.png" alt="Project Two" />
-          <h3>Bussines Web Page</h3>
-          <p>
-            Mordern responsive bussines web page built with HTML, CSS, and
-            JavaScript.
-          </p>
-          <p class="testimonial-author rating">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </p>
-        </div>
-
-        <div class="project-card">
-          <img
-            src="./img/Screenshot 2026-02-21 at 17-29-33 Omnifood — Never cook again!.png"
-            alt="Project four"
-          />
-          <h3>Omini Food</h3>
-          <p>
-            Responsive food delivery web page built with HTML, CSS, and
-            JavaScript.
-          </p>
-          <p class="rating">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </p>
-        </div>
-
-        <div class="project-card">
-          <img
-            src="./img/Screenshot 2026-02-21 at 17-29-11 Omnifood — Never cook again!.png"
-            alt="Project four"
-          />
-          <h3>Omini Food</h3>
-          <p>
-            Responsive food delivery web page built with HTML, CSS, and
-            JavaScript.
-          </p>
-          <p class="rating">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </p>
-        </div>
-
-        <div class="project-card">
-          <img
-            src="./img/Screenshot 2026-02-21 at 17-29-48 Omnifood — Never cook again!.png"
-            alt="Project four"
-          />
-          <h3>Omini Food</h3>
-          <p>
-            Responsive food delivery web page built with HTML, CSS, and
-            JavaScript.
-          </p>
-          <p class="rating">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </p>
-        </div>
-
-        <div class="project-card">
-          <img
-            src="./img/Screenshot 2026-02-21 at 17-30-04 Omnifood — Never cook again!.png"
-            alt="Project four"
-          />
-          <h3>Omini Food</h3>
-          <p>
-            Responsive food delivery web page built with HTML, CSS, and
-            JavaScript.
-          </p>
-          <p class="rating">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </p>
-        </div>
-
-        <div class="project-card">
-          <img src="./img/project_4.png" alt="Project four" />
-          <h3>Facebook login page</h3>
-          <p>
-            Responsive Facebook login page built with HTML, CSS, and JavaScript.
-          </p>
-          <p class="rating">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="fade-in contact-section">
-      <div class="contact-content">
-        <h2>Contact</h2>
-
-        <ul class="contact-list">
-          <li>
-            <a
-              class="contact-link"
-              href="mailto:emmantey64@gmail.com"
-              target="_blank"
-              rel="noopener"
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary"
+              ><i class="fa-solid fa-angles-down"></i>View My Work</a
             >
-              <ion-icon class="social-icon" name="logo-google"></ion-icon>
-              Email Me
-            </a>
-          </li>
-
-          <li>
-            <a
-              class="contact-link"
-              href="https://www.linkedin.com/in/emmanuel-mantey-826684273/"
-              target="_blank"
-              rel="noopener"
+            <a href="#contact" class="btn btn-ghost"
+              ><i class="fa-solid fa-paper-plane"></i>Get in Touch</a
             >
-              <ion-icon class="social-icon" name="logo-linkedin"></ion-icon>
-              LinkedIn
-            </a>
-          </li>
-
-          <li>
+          </div>
+          <div class="hero-socials">
             <a
-              class="contact-link"
+              class="social-link"
               href="https://github.com/FUSE-101/"
               target="_blank"
               rel="noopener"
-            >
-              <ion-icon class="social-icon" name="logo-github"></ion-icon>
-              GitHub
-            </a>
-          </li>
-        </ul>
-      </div>
-    </section>
+              aria-label="GitHub"
+              ><i class="fa-brands fa-github"></i
+            ></a>
+            <a
+              class="social-link"
+              href="https://www.linkedin.com/in/emmanuel-mantey-826684273/"
+              target="_blank"
+              rel="noopener"
+              aria-label="LinkedIn"
+              ><i class="fa-brands fa-linkedin"></i
+            ></a>
+            <a
+              class="social-link"
+              href="mailto:emmantey64@gmail.com"
+              aria-label="Email"
+              ><i class="fa-solid fa-envelope"></i
+            ></a>
+          </div>
+        </div>
+
+        <div class="terminal-card" aria-hidden="true">
+          <div class="terminal-head">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="terminal-title">security-scan.sh</span>
+          </div>
+          <div class="terminal-body">
+            <p><span class="t-green">$</span> whoami</p>
+            <p class="t-dim">emmanuel — front-end dev &amp; security learner</p>
+            <p><span class="t-green">$</span> nmap -sV --top-ports 100 192.168.1.10</p>
+            <p class="t-dim">Starting Nmap 7.94 ( https://nmap.org )</p>
+            <p class="t-dim">PORT&nbsp;&nbsp;&nbsp;&nbsp;STATE&nbsp;&nbsp;SERVICE</p>
+            <p><span class="t-cyan">22/tcp</span>&nbsp;&nbsp;&nbsp;open&nbsp;&nbsp;&nbsp;ssh</p>
+            <p><span class="t-cyan">443/tcp</span>&nbsp;&nbsp;open&nbsp;&nbsp;&nbsp;https</p>
+            <p><span class="t-green">$</span> ./ship-it --secure</p>
+            <p class="t-green">✔ build passed · deployed in 4.2s</p>
+            <p><span class="t-green">$</span> <span class="t-cursor">▊</span></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= STATS ================= -->
+      <!-- EDIT: update the numbers to match your real stats -->
+      <section id="stats" class="stats fade-in" aria-label="Highlights">
+        <div class="stat">
+          <span class="counter" data-count="10" data-suffix="+">0</span>
+          <span class="stat-label">Projects Built</span>
+        </div>
+        <div class="stat">
+          <span class="counter" data-count="25" data-suffix="+">0</span>
+          <span class="stat-label">Tools &amp; Technologies</span>
+        </div>
+        <div class="stat">
+          <span class="counter" data-count="50" data-suffix="+">0</span>
+          <span class="stat-label">CTF Challenges Solved</span>
+        </div>
+        <div class="stat">
+          <span class="counter" data-count="3" data-suffix="+">0</span>
+          <span class="stat-label">Security Domains</span>
+        </div>
+      </section>
+
+      <!-- ================= ABOUT ================= -->
+      <section id="about" class="about fade-in">
+        <h2 class="section-title"><span class="title-index">01.</span>About Me</h2>
+        <div class="about-grid">
+          <div class="about-photo">
+            <div class="photo-frame"></div>
+            <img src="./img/me4545.jpg" alt="Portrait of Emmanuel Mantey" />
+          </div>
+          <div class="about-text">
+            <!-- EDIT: make this bio your own -->
+            <p>
+              I'm a passionate Front-End Developer who builds clean,
+              responsive, and high-performance websites — and I approach
+              every project with a cybersecurity mindset. I believe great
+              engineering isn't just about how a site looks; it's about how
+              safely and reliably it runs under real-world conditions.
+            </p>
+            <p>
+              Outside of building interfaces, I spend time in the
+              trenches: running labs, scanning networks, and working
+              through CTF challenges to sharpen my offensive and
+              defensive security skills. That hands-on practice feeds
+              directly back into my front-end work.
+            </p>
+            <ul class="highlights">
+              <li><i class="fa-solid fa-check"></i>Clean, maintainable &amp; accessible code</li>
+              <li><i class="fa-solid fa-check"></i>Performance-first, security-minded builds</li>
+              <li><i class="fa-solid fa-check"></i>Continuous learning — labs, CTFs &amp; new tech</li>
+              <li><i class="fa-solid fa-check"></i>OWASP-aware secure development habits</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= EXPERIENCE ================= -->
+      <section id="experience" class="experience fade-in">
+        <h2 class="section-title"><span class="title-index">02.</span>Experience</h2>
+        <!-- EDIT: replace with your real experience -->
+        <div class="timeline">
+          <div class="timeline-item">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-body">
+              <p class="timeline-date">2023 — Present</p>
+              <h3>Front-End Developer</h3>
+              <p class="timeline-org">Freelance &amp; Personal Projects</p>
+              <p class="timeline-desc">
+                Designing and building responsive, accessible web
+                experiences with modern JavaScript, React and CSS — with a
+                focus on performance budgets and secure defaults.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-body">
+              <p class="timeline-date">2024 — Present</p>
+              <h3>Cybersecurity Enthusiast</h3>
+              <p class="timeline-org">Self-Directed Labs &amp; CTFs</p>
+              <p class="timeline-desc">
+                Hands-on practice with network scanning, web application
+                testing (OWASP Top 10), and capture-the-flag challenges on
+                TryHackMe &amp; HackTheBox.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= SKILLS ================= -->
+      <section id="skills" class="skills fade-in">
+        <h2 class="section-title"><span class="title-index">03.</span>Skills</h2>
+
+        <div class="skills-group">
+          <h3 class="skills-label">
+            <i class="fa-solid fa-code"></i> Front-End Development
+          </h3>
+          <div class="skills-chips">
+            <span class="skill-chip"><i class="fa-brands fa-html5"></i>HTML5</span>
+            <span class="skill-chip"><i class="fa-brands fa-css3-alt"></i>CSS3</span>
+            <span class="skill-chip"><i class="fa-brands fa-js"></i>JavaScript</span>
+            <span class="skill-chip"><i class="fa-brands fa-react"></i>React</span>
+            <span class="skill-chip"><i class="fa-solid fa-mobile-screen-button"></i>Responsive Design</span>
+            <span class="skill-chip"><i class="fa-brands fa-git-alt"></i>Git &amp; GitHub</span>
+            <span class="skill-chip"><i class="fa-solid fa-gauge-high"></i>Web Performance</span>
+            <span class="skill-chip"><i class="fa-solid fa-universal-access"></i>Accessibility</span>
+          </div>
+        </div>
+
+        <div class="skills-group">
+          <h3 class="skills-label">
+            <i class="fa-solid fa-shield-halved"></i> Cybersecurity
+          </h3>
+          <div class="skills-chips">
+            <span class="skill-chip"><i class="fa-solid fa-network-wired"></i>Network Security</span>
+            <span class="skill-chip"><i class="fa-solid fa-user-secret"></i>Penetration Testing</span>
+            <span class="skill-chip"><i class="fa-solid fa-globe"></i>Web App Security</span>
+            <span class="skill-chip"><i class="fa-solid fa-triangle-exclamation"></i>OWASP Top 10</span>
+            <span class="skill-chip"><i class="fa-solid fa-key"></i>Cryptography</span>
+            <span class="skill-chip"><i class="fa-solid fa-magnifying-glass"></i>OSINT</span>
+            <span class="skill-chip"><i class="fa-solid fa-clipboard-check"></i>Vulnerability Assessment</span>
+            <span class="skill-chip"><i class="fa-solid fa-screwdriver-wrench"></i>Incident Response</span>
+            <span class="skill-chip"><i class="fa-brands fa-linux"></i>Linux Security</span>
+            <span class="skill-chip"><i class="fa-solid fa-lock"></i>Secure Coding</span>
+          </div>
+        </div>
+
+        <div class="skills-group">
+          <h3 class="skills-label">
+            <i class="fa-solid fa-screwdriver-wrench"></i> Tools &amp; Platforms
+          </h3>
+          <div class="skills-chips">
+            <span class="skill-chip"><i class="fa-brands fa-linux"></i>Kali Linux</span>
+            <span class="skill-chip"><i class="fa-solid fa-bug"></i>Burp Suite</span>
+            <span class="skill-chip"><i class="fa-solid fa-crosshairs"></i>Nmap</span>
+            <span class="skill-chip"><i class="fa-solid fa-wave-square"></i>Wireshark</span>
+            <span class="skill-chip"><i class="fa-solid fa-terminal"></i>Metasploit</span>
+            <span class="skill-chip"><i class="fa-solid fa-database"></i>SQLMap</span>
+            <span class="skill-chip"><i class="fa-solid fa-server"></i>Netlify / Vercel</span>
+            <span class="skill-chip"><i class="fa-solid fa-code"></i>VS Code</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= CYBERSECURITY ================= -->
+      <section id="security" class="cyber fade-in">
+        <h2 class="section-title"><span class="title-index">04.</span>Cybersecurity</h2>
+        <p class="cyber-intro">
+          Security isn't an afterthought — it's a mindset. I pair my
+          front-end craft with offensive &amp; defensive security skills to
+          build <em>and</em> audit safer web experiences.
+        </p>
+
+        <div class="focus-grid">
+          <article class="focus-card">
+            <div class="focus-icon"><i class="fa-solid fa-globe"></i></div>
+            <h3>Web Application Security</h3>
+            <p>
+              Testing for OWASP Top 10 issues — XSS, SQL injection, CSRF,
+              broken auth — and hardening apps with secure headers, CSP and
+              strict input validation.
+            </p>
+          </article>
+          <article class="focus-card">
+            <div class="focus-icon"><i class="fa-solid fa-network-wired"></i></div>
+            <h3>Network Security</h3>
+            <p>
+              Port scanning and service enumeration with Nmap, packet
+              analysis with Wireshark &amp; tcpdump, and practical
+              network-hardening exercises.
+            </p>
+          </article>
+          <article class="focus-card">
+            <div class="focus-icon"><i class="fa-solid fa-bug"></i></div>
+            <h3>Offensive Security</h3>
+            <p>
+              Burp Suite workflows, privilege-escalation labs and structured
+              CTF methodology: recon → exploit → escalate → document.
+            </p>
+          </article>
+          <article class="focus-card">
+            <div class="focus-icon"><i class="fa-solid fa-lock"></i></div>
+            <h3>Secure Development</h3>
+            <p>
+              Writing code with security baked in — secrets management,
+              least privilege, HTTPS &amp; HSTS, dependency auditing and
+              sanitized user input.
+            </p>
+          </article>
+        </div>
+
+        <!-- Animated terminal -->
+        <div class="cyber-term" id="cyber-term" aria-hidden="true">
+          <div class="terminal-head">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="terminal-title">pentest-demo.sh</span>
+          </div>
+          <div class="terminal-body">
+            <p class="term-line"><span class="t-green">$</span> <span class="term-out" data-text="whoami"></span></p>
+            <p class="term-line term-out-holder" data-text="emmanuel — front-end dev &amp; security learner"></p>
+            <p class="term-line"><span class="t-green">$</span> <span class="term-out" data-text="nmap -sV 192.168.1.10"></span></p>
+            <p class="term-line term-out-holder" data-text="Starting Nmap 7.94 ( https://nmap.org )"></p>
+            <p class="term-line term-out-holder" data-text="22/tcp open ssh · 443/tcp open https"></p>
+            <p class="term-line"><span class="t-green">$</span> <span class="term-out" data-text="sqlmap -u https://target.com/item?id=1 --dbs"></span></p>
+            <p class="term-line term-out-holder" data-text="[INFO] target URL appears to be injectable"></p>
+            <p class="term-line term-out-holder" data-text="available databases: [app_db, users]"></p>
+            <p class="term-line"><span class="t-green">$</span> <span class="term-out" data-text="exit"></span></p>
+          </div>
+        </div>
+
+        <div class="tools-row">
+          <!-- EDIT: trim or extend this list to your actual toolset -->
+          <span class="tool-chip"><i class="fa-solid fa-crosshairs"></i>Nmap</span>
+          <span class="tool-chip"><i class="fa-solid fa-bug"></i>Burp Suite</span>
+          <span class="tool-chip"><i class="fa-solid fa-wave-square"></i>Wireshark</span>
+          <span class="tool-chip"><i class="fa-solid fa-terminal"></i>Metasploit</span>
+          <span class="tool-chip"><i class="fa-solid fa-database"></i>SQLMap</span>
+          <span class="tool-chip"><i class="fa-solid fa-folder-open"></i>Gobuster</span>
+          <span class="tool-chip"><i class="fa-solid fa-server"></i>Hydra</span>
+          <span class="tool-chip"><i class="fa-solid fa-key"></i>John the Ripper</span>
+          <span class="tool-chip"><i class="fa-solid fa-magnifying-glass"></i>Nikto</span>
+          <span class="tool-chip"><i class="fa-solid fa-satellite-dish"></i>OWASP ZAP</span>
+          <span class="tool-chip"><i class="fa-solid fa-tower-broadcast"></i>tcpdump</span>
+          <span class="tool-chip"><i class="fa-solid fa-hashtag"></i>Hashcat</span>
+        </div>
+
+        <div class="badge-row">
+          <!-- EDIT: replace with your real certifications / achievements -->
+          <span class="badge"><i class="fa-solid fa-graduation-cap"></i>CompTIA Security+ <em>in progress</em></span>
+          <span class="badge"><i class="fa-solid fa-flag"></i>TryHackMe — Top 5%</span>
+          <span class="badge"><i class="fa-solid fa-skull"></i>HackTheBox — Active</span>
+          <span class="badge"><i class="fa-solid fa-triangle-exclamation"></i>OWASP Top 10 Practitioner</span>
+        </div>
+      </section>
+
+      <!-- ================= PROJECTS ================= -->
+      <section id="projects" class="projects fade-in">
+        <h2 class="section-title"><span class="title-index">05.</span>Projects</h2>
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-img">
+              <img src="./img/project_1.png" alt="Screenshot of a responsive Android-style web page" loading="lazy" />
+              <div class="project-overlay"><i class="fa-solid fa-up-right-from-square"></i></div>
+            </div>
+            <div class="project-body">
+              <h3>Android Web Page</h3>
+              <p>Responsive Android-style landing page built with HTML and CSS.</p>
+              <div class="project-tags"><span>HTML</span><span>CSS</span></div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-img">
+              <img src="./img/Screenshot 2026-02-21 at 17-37-41 Android.png" alt="Second view of the Android-style web page" loading="lazy" />
+              <div class="project-overlay"><i class="fa-solid fa-up-right-from-square"></i></div>
+            </div>
+            <div class="project-body">
+              <h3>Android Web Page</h3>
+              <p>Mobile-first Android landing page with clean component styling.</p>
+              <div class="project-tags"><span>HTML</span><span>CSS</span></div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-img">
+              <img src="./img/Screenshot 2026-02-21 at 17-38-31 Blog — Data Vault.png" alt="Screenshot of a contact page for a data vault blog" loading="lazy" />
+              <div class="project-overlay"><i class="fa-solid fa-up-right-from-square"></i></div>
+            </div>
+            <div class="project-body">
+              <h3>Contact Page — Data Vault</h3>
+              <p>Contact section for a data vault blog built with HTML, CSS and JavaScript.</p>
+              <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-img">
+              <img src="./img/project_3.png" alt="Screenshot of a contact web page" loading="lazy" />
+              <div class="project-overlay"><i class="fa-solid fa-up-right-from-square"></i></div>
+            </div>
+            <div class="project-body">
+              <h3>Contact Web Page</h3>
+              <p>Full responsive contact page with a clean form layout, built from scratch.</p>
+              <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-img">
+              <img src="./img/project_2.png" alt="Screenshot of a modern business web page" loading="lazy" />
+              <div class="project-overlay"><i class="fa-solid fa-up-right-from-square"></i></div>
+            </div>
+            <div class="project-body">
+              <h3>Business Web Page</h3>
+              <p>Modern, responsive business site with semantic sections and a clean UX.</p>
+              <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-img">
+              <img src="./img/Screenshot 2026-02-21 at 17-29-33 Omnifood — Never cook again!.png" alt="Omnifood landing page hero view" loading="lazy" />
+              <div class="project-overlay"><i class="fa-solid fa-up-right-from-square"></i></div>
+            </div>
+            <div class="project-body">
+              <h3>Omnifood</h3>
+              <p>Responsive food-delivery landing page with pricing and testimonials.</p>
+              <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-img">
+              <img src="./img/Screenshot 2026-02-21 at 17-29-11 Omnifood — Never cook again!.png" alt="Omnifood hero and features view" loading="lazy" />
+              <div class="project-overlay"><i class="fa-solid fa-up-right-from-square"></i></div>
+            </div>
+            <div class="project-body">
+              <h3>Omnifood</h3>
+              <p>Hero and feature sections of the Omnifood landing page.</p>
+              <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-img">
+              <img src="./img/Screenshot 2026-02-21 at 17-29-48 Omnifood — Never cook again!.png" alt="Omnifood meal selection view" loading="lazy" />
+              <div class="project-overlay"><i class="fa-solid fa-up-right-from-square"></i></div>
+            </div>
+            <div class="project-body">
+              <h3>Omnifood</h3>
+              <p>Meal-selection section of the Omnifood landing page.</p>
+              <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-img">
+              <img src="./img/Screenshot 2026-02-21 at 17-30-04 Omnifood — Never cook again!.png" alt="Omnifood app download section view" loading="lazy" />
+              <div class="project-overlay"><i class="fa-solid fa-up-right-from-square"></i></div>
+            </div>
+            <div class="project-body">
+              <h3>Omnifood</h3>
+              <p>App-download and call-to-action sections of the Omnifood landing page.</p>
+              <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-img">
+              <img src="./img/project_4.png" alt="Screenshot of a Facebook login page clone" loading="lazy" />
+              <div class="project-overlay"><i class="fa-solid fa-up-right-from-square"></i></div>
+            </div>
+            <div class="project-body">
+              <h3>Facebook Login Clone</h3>
+              <p>Pixel-accurate Facebook login page rebuilt with HTML, CSS and JavaScript.</p>
+              <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+            </div>
+          </article>
+
+           <article class="project-card">
+            <div class="project-img">
+              <img src="./img/project_6.png" alt="Screenshot of a Facebook login page clone" loading="lazy" />
+              <div class="project-overlay"><i class="fa-solid fa-up-right-from-square"></i></div>
+            </div>
+            <div class="project-body">
+              <h3>Complete alumni network</h3>
+              <p>Alumni networking platform with user profiles and connection features.</p>
+              <div class="project-tags"><span>HTML</span><span>CSS</span><span>php</span><span>mysql</span><span>phpmyadmin</span><span>javascript</span></div>
+            </div>
+          </article>
+
+           <article class="project-card">
+            <div class="project-img">
+              <img src="./img/project_5.png" alt="Screenshot of a Facebook login page clone" loading="lazy" />
+              <div class="project-overlay"><i class="fa-solid fa-up-right-from-square"></i></div>
+            </div>
+            <div class="project-body">
+              <h3>Complete hostel management system</h3>
+              <p>Hostel management system with user authentication and booking features.</p>
+              <div class="project-tags"><span>HTML</span><span>CSS</span><span>php</span><span>mysql</span><span>phpmyadmin</span><span>javascript</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ================= CONTACT ================= -->
+      <section id="contact" class="contact fade-in">
+        <h2 class="section-title"><span class="title-index">06.</span>Contact</h2>
+        <p class="contact-line">
+          Have a project in mind, or want to talk security? My inbox is
+          always open.
+        </p>
+        <div class="contact-grid">
+          <a
+            class="contact-card"
+            href="mailto:emmantey64@gmail.com"
+            aria-label="Send an email"
+          >
+            <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+            <span class="contact-label">Email</span>
+            <span class="contact-value">emmantey64@gmail.com</span>
+          </a>
+          <a
+            class="contact-card"
+            href="https://www.linkedin.com/in/emmanuel-mantey-826684273/"
+            target="_blank"
+            rel="noopener"
+            aria-label="LinkedIn profile"
+          >
+            <div class="contact-icon"><i class="fa-brands fa-linkedin"></i></div>
+            <span class="contact-label">LinkedIn</span>
+            <span class="contact-value">in/emmanuel-mantey</span>
+          </a>
+          <a
+            class="contact-card"
+            href="https://github.com/FUSE-101/"
+            target="_blank"
+            rel="noopener"
+            aria-label="GitHub profile"
+          >
+            <div class="contact-icon"><i class="fa-brands fa-github"></i></div>
+            <span class="contact-label">GitHub</span>
+            <span class="contact-value">FUSE-101</span>
+          </a>
+        </div>
+
+        <div class="contact-cta">
+          <p>
+            Ready to start? Clear, fixed prices in USD — no surprises.
+          </p>
+          <a href="booking.html" class="btn btn-primary">
+            <i class="fa-solid fa-calendar-check"></i>See Pricing &amp; Book Me
+          </a>
+        </div>
+      </section>
+    </main>
 
     <footer>
-      <p>© 2026 Emmanuel. All Rights Reserved.</p>
+      <p>© 2026 Emmanuel Mantey. Built with <span class="foot-bolt">⚡</span> and a security mindset.</p>
+      <p class="foot-note">
+        <i class="fa-solid fa-terminal"></i> exit 0 — no vulnerabilities found
+      </p>
     </footer>
-    <script src="./script.js"></script>
-  
-    
 
+    <button id="back-to-top" aria-label="Back to top">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script src="./script.js"></script>
   </body>
 </html>
-
-
-
-
-
