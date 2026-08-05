@@ -1,6 +1,6 @@
 
 
- 🌐 Personal Portfolio Website: https://portfolio-g6lg.onrender.com
+ 🌐https://emmanteyportfolio.netlify.app
 
 Welcome to my personal portfolio website repository.
 This project represents my skills, creativity, and technical growth as a developer.
