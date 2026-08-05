@@ -134,7 +134,7 @@ $$(".counter").forEach((el) => counterObserver.observe(el));
    ============================================================ */
 const typedEl = $("#typed");
 const roles = [
-  "Front-End Developer",
+  "Full-Stack Developer",
   "Cybersecurity Enthusiast",
   "Web Security Learner",
 ];
